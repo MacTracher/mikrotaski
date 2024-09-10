@@ -9,9 +9,19 @@ import React, {ChangeEvent, ChangeEventHandler, useState} from 'react';
 //     setMessage: (message: MessageType) => void
 //
 // }
+export type MessageArrayType = {
+    message: string,
+}
 
 
-export const FullInput = (props:any) => {
+type FullInputPropsType = {
+    message: Array<MessageArrayType>,
+    OnClickAddToMassive: (title:string)=>void
+
+}
+
+
+export const FullInput = (props:FullInputPropsType) => {
 
 
 
@@ -22,21 +32,22 @@ export const FullInput = (props:any) => {
     ) => {
 
         setTitle(event.currentTarget.value);
-        console.log(title);
+
 
     }
 
 
+
+
     const onClickButtonHandler = () => {
+        props.OnClickAddToMassive(title)
+        setTitle('');
 
-        props.message.push({message: title})
-
-        console.log(props.message)
     }
 
     return (
         <div>
-            <input onChange={onChangeInputHandler}/>
+            <input value={title} onChange={onChangeInputHandler}/>
             <button onClick={onClickButtonHandler}>+
             </button>
 

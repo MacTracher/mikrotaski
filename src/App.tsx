@@ -7,12 +7,22 @@ import {Footer} from "./site/Footer";
 import {NewComponent} from "./NewComponent";
 import {ButtonComponents} from "./Components/ButtonComponents";
 import {MoneyFilter} from "./MoneyFilter/MoneyFilter";
-import {FullInput} from "./Components/FullInput";
+
+import {Input} from "./Components/InputButton/Input";
+import {Button} from "./Components/InputButton/Button";
 
 
 type FilterType = 'All' | 'Dollars' | 'RUBLS'
 
+
+
+
 function App() {
+
+
+
+
+
     const students = [
         {id: 1, name: "James", age: 8},
         {id: 2, name: "Robert", age: 18},
@@ -81,11 +91,29 @@ function App() {
         {message: 'message3'},
     ])
 
+    let [title, setTitle] = useState('');
 
-    const SetMessageHandler = () => {
-        // setMessage([])
-        setMessage([...message])
+
+
+
+    const OnClickAddToMassive = (title: string ) => {
+        setMessage([{message: title}, ...message])
+
     }
+
+    const onClickButtonHandler = () => {
+
+       OnClickAddToMassive(title)
+        setTitle('');
+
+    }
+
+
+
+    // const SetMessageHandler = (props:any) => {
+    //     console.log(props.title)
+    //     setMessage([...message])
+    // }
 
     return (
         <>
@@ -123,11 +151,19 @@ function App() {
             {/*    <button onClick={()=>{ButtonHandlerFilter('Dollars')}}>Dollars</button>*/}
             {/*</div>*/}
 
-            <FullInput message={message}
+            {/*<FullInput*/}
+            {/*    message={message}*/}
 
-                       SetMessageHandler={SetMessageHandler}
+            {/*    OnClickAddToMassive={OnClickAddToMassive}*/}
+            {/*/>*/}
+
+            <Input
+
+                title={title}
+                setTitle={setTitle}
+
             />
-
+            <Button name={'+'} callBack={onClickButtonHandler}/>
             {<>
 
                 {message.map((el, index) => {
