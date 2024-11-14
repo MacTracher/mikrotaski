@@ -115,6 +115,8 @@ function App() {
     //     setMessage([...message])
     // }
 
+
+
     return (
         <>
 
@@ -176,6 +178,9 @@ function App() {
             </>}
 
             <MoneyFilter money={money}/>
+
+
+
 
 
         </>
